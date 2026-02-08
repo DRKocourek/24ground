@@ -21,11 +21,11 @@ body {
 }
 #ITKO {
     position: absolute; 
-    bottom: 3135px; /*3240 3245*/
-    left: -905px;  /*-900 -910*/
+    bottom: 3120px; /*3240 3245*/
+    left: -980px;  /*-900 -910*/
     transform: rotate(90deg); /*85 87*/
-    width: 430px; /*400 400*/
-    height: 740px;
+    width: 580px; /*400 400*/
+    height: 770px;
 }
 #ILAR {
     position: absolute; 
@@ -44,10 +44,11 @@ body {
 }
 #IPPH {
     position: absolute; 
-    bottom: 1947px; 
-    left: 1513px;  
-    transform: rotate(90deg);
-    width: 365px;
+    bottom: 1955px; /*1947*/
+    left: 1513px;  /*1513*/
+    transform: rotate(90deg);/*90*/
+    width: 350px; /*365 */
+    height: 485px;
 }
 #taxiways {
     font-size: 8px;
