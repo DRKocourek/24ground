@@ -37,18 +37,18 @@ body {
 #IRFD {
     position: absolute; 
     bottom: -2520px; /*-2545 -2550 -2523 -2520-these are almost perfect*/  
-    left: -443px; /*-425 -427 -435 -445-these are almost perfect*/
+    left: -445px; /*-425 -427 -435 -445-these are almost perfect*/
     transform: rotate(90deg); /*87 87 90 90-these are almost perfect*/
-    width: 410px; /*385 393 380 415-these are almost perfect*/
-    height: 430px; /* 00 00 480 490-these are almost perfect*/
+    width: 415px; /*385 393 380 415-these are almost perfect*/
+    height: 490px; /* 00 00 480 490-these are almost perfect*/
 }
 #IPPH {
     position: absolute; 
-    bottom: 2003px; /*1947 2000 2003*/
-    left: 1510px;  /*1513 1515 1510*/
+    bottom: 1973px; /*1947 2000 2003*/
+    left: 1520px;  /*1513 1515 1510*/
     transform: rotate(90deg);/*90 90 90*/
-    width: 345px; /*365 340 345*/
-    height: 420px; /* 00 420 420*/
+    width: 340px; /*365 340 345*/
+    height: 460px; /* 00 420 420*/
 }
 #taxiways {
     font-size: 8px;

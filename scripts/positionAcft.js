@@ -1,4 +1,12 @@
-const ws = new WebSocket("wss://somedoctorapi.drkocourek.stream/api/acft-data");
+let server_url
+async function setup() {
+  const res = await fetch("https://somedoctorapi.drkocourek.stream");
+  server_url = res;
+}
+
+setup();
+
+const ws = new WebSocket("wss://" + server_url + "/api/acft-data");
 
 const WORLD_MIN_X = -48000;
 const WORLD_MAX_X =  48000;
