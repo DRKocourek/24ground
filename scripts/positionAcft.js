@@ -1,12 +1,39 @@
 let server_url
+let ws;
 async function setup() {
-  const res = await fetch("https://somedoctorapi.drkocourek.stream");
-  server_url = res;
+  const res = await fetch("https://loadbalancer.drkocourek.workers.dev/");
+  server_url = await res.json();
+
+  console.log(server_url);
+
+  return new Promise((resolve, reject) => {
+    ws = new WebSocket(
+      server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"
+    );
+
+    ws.onopen = () => {
+      console.log("WebSocket open");
+      resolve(ws);
+    };
+    ws.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      deleteInactive(message);
+      positionPlanes(message);
+    }
+    ws.onclose = () => {
+      console.log("Websocket closed");
+    }
+
+
+    ws.onerror = (err) => {
+      reject(err);
+    };
+  });
 }
+
 
 setup();
 
-const ws = new WebSocket("wss://" + server_url + "/api/acft-data");
 
 const WORLD_MIN_X = -48000;
 const WORLD_MAX_X =  48000;
@@ -21,24 +48,9 @@ const SCALE = MAP_SIZE / WORLD_SIZE;
 
 let previousCallsign = []
 
-ws.onopen = () => {
-  console.log("Websocket open");
-}
 
 
-ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    deleteInactive(message);
-    positionPlanes(message);
 
-}
-ws.onerror = (error) => {
-  console.log("Error: ", error);
-}
-
-ws.onclose = () => {
-  console.log("Websocket closed");
-}
 
 function deleteInactive(message) {
   //check if the array is empty
