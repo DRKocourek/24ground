@@ -1,5 +1,5 @@
 let banner = document.getElementById("cookie_Banner");
-if(localStorage.getItem("cookie_read") === true) {
+if(localStorage.getItem("cookie_read") === "true") {
     banner.style.display = "none";
     console.log("dont display");
 } else {
