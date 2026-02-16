@@ -1,4 +1,4 @@
-const zoomElement = document.body;
+const zoomElement = document.getElementById("zoomable");
 let zoom = 1;
 const ZOOM_SPEED = 0.1;
 const MIN_ZOOM = 0.1;

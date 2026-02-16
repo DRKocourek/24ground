@@ -8,34 +8,62 @@
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     </head>
     <body>
+
+        <div id="app">
+        <div id="top_bar">
+            <p onclick="generateIFR();">IFR Clearance</p>
+            <div id="IFR_menu" style="display: none;">
+                <p id="ifr_callsign">Select aircraft first!</p>
+            </div>
+        </div>
+
+        <div id="zoomable">
         <div id="main">
-        <img src="other/PTFS_map_dark_runways.png" alt="" id="background">
-        <img src="charts/ITKO.png" alt=""id="ITKO">
-        <img src="charts/ILAR.png" alt="" id="ILAR">
-        <img src="charts/IRFD.png" alt="" id="IRFD">
-        <img src="charts/IPPH.png" alt="" id="IPPH">
+            <div id="map">
+                <img src="other/PTFS_map_dark_runways.png" alt="" id="background">
+                <img src="charts/ITKO.png" alt=""id="ITKO">
+                <img src="charts/ILAR.png" alt="" id="ILAR">
+                <img src="charts/IRFD.png" alt="" id="IRFD">
+                <img src="charts/IPPH.png" alt="" id="IPPH">
+            </div>
         <div id="planes">
 
         </div>
         <div id="taxiways">
             <div id="IRFD_taxi">
-                <p style="position: absolute; bottom: -2310px; left: -350px;">A1</p>
-                <p style="position: absolute; bottom: -2290px; left: -295px;">A</p>
+                <p style="position: absolute; bottom: -2315px; left: -355px;">A1</p>
+                <p style="position: absolute; bottom: -2305px; left: -317px;">A</p>
                 <p style="position: absolute; bottom: -2302px; left: -330px;">A2</p>
                 <p style="position: absolute; bottom: -2263px; left: -225px;">A</p>
-                <p style="position: absolute; bottom: -2280px; left: -365px;">B</p>
-                <p style="position: absolute; bottom: -2250px; left: -377px;">B1</p>
+                <p style="position: absolute; bottom: -2280px; left: -367px;">B</p>
+                <p style="position: absolute; bottom: -2250px; left: -380px;">B1</p>
                 <p style="position: absolute; bottom: -2235px; left: -358px;">B2</p>
-                <p style="position: absolute; bottom: -2295px; left: -313px;">C</p>
+                <p style="position: absolute; bottom: -2297px; left: -315px;">C</p>
             </div>
         </div>
         </div>
-
-
-        <script src="scripts/positionAcft.js"></script>
+        <!--<div id="approaches">
+            <svg height="13500px" width="13500px">
+                <polygon points="-174,2199 368,2025 331,1966 -174,2200" style="fill: red;"/>
+            </svg>
+        </div>-->
+    </div>
+    </div>
+    <div id="cookie_Banner" style="display:none;">
+        <h3>Just a heads up!</h3>
+        <p>24ground uses cookies for storing your preferences, your IFR clearance format and maybe authentication. All of that data (except for authentication) never leaves your device!</p>
+        <a href="https://24ground.drkocourek.stream/cookie_policy">Cookie Policy</a>
+        <button onclick="closeBanner()">Close</button>
+        <button onclick="dontShow()">Don't show again</button>
+    </div>
+        
+        <script src="scripts/aircraftSelector.js"></script>
+        <script src="scripts/fetchServer.js"></script>
+        <script src="scripts/bannerManager.js"></script>
+        <script src="scripts/handleFlighplans.js"></script>
         <script src="scripts/handleZoom.js"></script>
+        <script src="scripts/positionAcft.js"></script>
         <script src="scripts/handlePanning.js"></script>
-        <script src="scripts/clickToPixel.js"></script>
-        <script src="scripts/alignPositions.js"></script>
+        <script src="scripts/ifrGenerator.js"></script>
     </body>
 </html>

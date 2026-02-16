@@ -1,19 +1,14 @@
-let server_url
 let ws;
 async function setup() {
-  const res = await fetch("https://loadbalancer.drkocourek.workers.dev/");
-  server_url = await res.json();
-
-  console.log(server_url);
-
+  await serverPromise;
+  await flpPromise;
   return new Promise((resolve, reject) => {
     ws = new WebSocket(
       server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"
-    );
+    ); 
 
     ws.onopen = () => {
-      console.log("WebSocket open");
-      resolve(ws);
+      console.log("Acft data WebSocket open");
     };
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
@@ -21,7 +16,11 @@ async function setup() {
       positionPlanes(message);
     }
     ws.onclose = () => {
-      console.log("Websocket closed");
+      console.log("Acft data websocket closed");
+      setTimeout(    
+        ws = new WebSocket(server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"),
+        3000
+      );
     }
 
 
@@ -31,14 +30,14 @@ async function setup() {
   });
 }
 
+const acftPromise = setup();
 
-setup();
 
 
-const WORLD_MIN_X = -48000;
-const WORLD_MAX_X =  48000;
-const WORLD_MIN_Y = -48000;
-const WORLD_MAX_Y =  48000;
+const WORLD_MIN_X = -60000;
+const WORLD_MAX_X =  60000;
+const WORLD_MIN_Y = -60000;
+const WORLD_MAX_Y =  60000;
 const MAP_WIDTH  = 13500;
 const MAP_HEIGHT = 13500;
 const MAP_SIZE = 13500;
@@ -55,7 +54,6 @@ let previousCallsign = []
 function deleteInactive(message) {
   //check if the array is empty
   if (previousCallsign.length === 0) {
-    console.log("empty");
     for(const aircraft in message.d){
       previousCallsign.push(aircraft);
     }
@@ -71,15 +69,12 @@ function deleteInactive(message) {
   }
   for(aircraft of previousCallsign) {
     if(!allAcft.includes(aircraft)){
-      console.log("Aircraft " + aircraft + " is inactive");
-      console.log(message.d);
       const elements = document.getElementsByClassName(aircraft);
       if (elements.length > 1) {
         elements[0].remove();
         elements[0].remove();
 
       }
-      console.log(previousCallsign);
     }
   }
   previousCallsign = allAcft;
@@ -130,7 +125,17 @@ function positionPlanes(message) {
     img.setAttribute("class", planeId);
     img.dataset.id = planeId;
     const callsign = document.createElement("p");
-    callsign.textContent = planeId;
+    const flp = flightplans.find(fp => fp.robloxName === plane.playerName);
+    if (flp) {
+      callsign.textContent = flp.callsign;
+      callsign.setAttribute("onclick", "selectAcft('" + flp.callsign + "');");
+    } else {
+      callsign.textContent = planeId;
+      callsign.setAttribute("onclick", 'selectAcft("' + planeId + '");');
+    }
+    if (callsign.textContent === selectedAcft) {
+      callsign.setAttribute("id", "selected");
+    }
     callsign.style.position = "absolute";
     callsign.style.top = `${coordinates.y}px`;
     callsign.style.left = `${coordinates.x}px`;
