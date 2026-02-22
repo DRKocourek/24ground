@@ -11,9 +11,31 @@
 
         <div id="app">
         <div id="top_bar">
-            <p onclick="generateIFR();">IFR Clearance</p>
+            <p onclick="toggleIFRmenu();">IFR Clearance</p>
+
+            <p onclick="toggleStationMenu();" style="margin-left: 23%;">Select station</p>
+            
+            <p style="margin-left: 7.5%;">Taxi Instruc</p>
             <div id="IFR_menu" style="display: none;">
-                <p id="ifr_callsign">Select aircraft first!</p>
+                <p id="ifr_callsign" class="IFR_text">Select aircraft first!</p>
+                <p id="ifr_clearance" class="IFR_text"></p>
+            </div>
+            <div id="station_menu" style="display: none;">
+                <select name="airport" id="airport" onchange="selectStation();">
+                    <option value="IRFD">IRFD</option>
+                    <option value="IMLR">IMLR</option>
+                    <option value="ITKO">ITKO</option>
+                    <option value="IPPH">IPPH</option>
+                    <option value="ILAR">IZOL</option>
+                    <option value="ILAR">ILAR</option>
+                    <option value="ISAU">ISAU</option>
+                </select>
+                <p id="display_position">IRFD_TWR</p>
+                <br>
+                <select name="station" id="station" style="margin-top: 0;" onchange="selectStation();">
+                    <option value="TWR">TWR</option>
+                    <option value="GND" id="GND_station">GND</option>
+                </select>
             </div>
         </div>
 
@@ -60,10 +82,12 @@
         <script src="scripts/aircraftSelector.js"></script>
         <script src="scripts/fetchServer.js"></script>
         <script src="scripts/bannerManager.js"></script>
-        <script src="scripts/handleFlighplans.js"></script>
+        <script src="scripts/handleGeneral.js"></script>
         <script src="scripts/handleZoom.js"></script>
         <script src="scripts/positionAcft.js"></script>
         <script src="scripts/handlePanning.js"></script>
+        <script src="scripts/stationSelector.js"></script>
+        <script src="scripts/runwayHandler.js"></script>
         <script src="scripts/ifrGenerator.js"></script>
     </body>
 </html>

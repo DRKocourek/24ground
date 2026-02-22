@@ -3,6 +3,7 @@ let previousElement = null;
 function selectAcft(acft) {
     const ifrCallsign = document.getElementById("ifr_callsign");
     selectedAcft = acft;
+    generateIFR();
     console.log(selectedAcft);
     ifrCallsign.textContent = selectedAcft;
     let selectedElement = document.getElementsByClassName(acft)[1];
@@ -12,5 +13,4 @@ function selectAcft(acft) {
     }
     previousElement = selectedElement;  
     selectedElement.setAttribute("id", "selected");
-
 }

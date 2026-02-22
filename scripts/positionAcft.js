@@ -16,7 +16,7 @@ async function setup() {
       positionPlanes(message);
     }
     ws.onclose = () => {
-      console.log("Acft data websocket closed");
+      console.log("Acft data websocket closed, reconnecting in 3 seconds...");
       setTimeout(    
         ws = new WebSocket(server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"),
         3000
@@ -86,19 +86,12 @@ function deleteInactive(message) {
 function worldToMap(x, y) {
   const mapCenterX = MAP_WIDTH / 2;
   const mapCenterY = MAP_HEIGHT / 2;
-  const Xoffset = 0; //220
-  const Yoffset = 0; //350
-  const scaleX = 0.09169189771376439 * 100; //0.09169189771376439 * 100
-  const scaleY = 0.10923732569011675 * 100; // 0.10923732569011675 * 100
-
-  const basemap = {
-    scale: { x: scaleX, y: scaleY },
-    position: { x: Xoffset, y: Yoffset }
-  };
+  const scaleX = 0.09169189771376439; //0.09169189771376439 * 100
+  const scaleY = 0.10923732569011675; // 0.10923732569011675 * 100
   
   return {
-    x: (x / 100) * basemap.scale.x + basemap.position.x,
-    y: (y / 100) * basemap.scale.y + basemap.position.y
+    x: x * scaleX,
+    y: y * scaleY
   };
 }
 
