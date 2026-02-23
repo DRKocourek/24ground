@@ -19,11 +19,16 @@
             <p style="margin-left: 7.5%;">Taxi Instruc</p>
             <div id="IFR_menu" style="display: none;">
                 <p id="ifr_callsign" class="IFR_text">Select aircraft first!</p>
-                <p id="ifr_clearance" class="IFR_text"></p>
+                <select name="IFR_rnw" id="rnw_select" onchange="generateIFR();">
+
+                </select>
+                <label for="initial">Initial Climb:</label>
+                <input type="text" name="initial" id="initial_climb">
+                <p id="ifr_clearance" class="IFR_text">Select aircraft first before doing IFR clearance!</p>
             </div>
             <div id="station_menu" style="display: none;">
-                <select name="airport" id="airport" onchange="selectStation(); teleportToAirport();">
-                    <option value="IRFD">IRFD</option>
+                <select name="airport" id="airport" style="margin-bottom:0px;"onchange="selectStation(); teleportToAirport();">
+                    <option value="IRFD" default>IRFD</option>
                     <option value="IMLR">IMLR</option>
                     <option value="ITKO">ITKO</option>
                     <option value="IPPH">IPPH</option>
@@ -78,7 +83,7 @@
         <a href="https://discord.gg/UDffxdEfBZ">Discord</a> | 
         <a href="https://24ground.drkocourek.stream/cookie_policy">Cookie policy</a> | 
         <a href="https://newstatus.drkocourek.stream/">Status</a> | 
-        <p style="display: inline;">v0.1.1 pre-beta</p>
+        <p style="display: inline;">v0.1.2 pre-beta</p>
     </footer>
     </div>
     <div id="cookie_Banner" style="display:none;">

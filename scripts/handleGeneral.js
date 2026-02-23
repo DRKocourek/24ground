@@ -15,9 +15,8 @@ async function setupGeneralWS() {
         flightplans = message.data;
       } else {
         atis = message.data;
-        console.log(atis);
+        selectStation();
       }
-      console.log(flightplans);
     }
     flp_ws.onclose = () => {
       console.log("General websocket closed, reconnecting in 3 seconds...");

@@ -1,13 +1,13 @@
 let IFRToggle = false;
 let IFRMenu = document.getElementById("IFR_menu");
 let IFRslot = document.getElementById("ifr_clearance");
+let initial_climb = document.getElementById("initial_climb");
+initial_climb.value = "020";
 function toggleIFRmenu() {
     if(IFRToggle) {
-        console.log("IFR turned off");
         IFRMenu.setAttribute("style", "display:none;");
         IFRToggle = false;
     } else {
-        console.log("IFR turned on");
         IFRMenu.setAttribute("style", "");
         IFRToggle = true;
     }
@@ -22,10 +22,10 @@ function generateIFR() {
         departing: flp.departing,
         arriving: flp.arriving,
         minutes: 3,
-        runway: getPrefferedRNW(), 
+        runway: rnw_select.value, 
         atis: atis.find(info => info.airport === airport.value).letter,
         squawk: Math.floor(Math.random() * (6999 - 3000) + 3000),
-        initial: "020",
+        initial: initial_climb.value,
     };
     const template = "{callsign}, good day. Information {atis} is in effect. Cleared to {arriving} via {route}, expect runway {runway} for departure. Initial climb to FL{initial}, expect further climb to FL{cruising} {minutes} minutes after depature. Squawk {squawk}.";
     //this line is vibe coded lmao
@@ -42,11 +42,11 @@ function getPrefferedRNW() {
     const str = atis.find(info => info.airport === airport.value).lines[1];
     const prefferedRNW = prefferedDepRNW.find(line => line.airport === airport.value);
 
+
     const match = str.match(/DEP\s+RWY\s+(.*?)\s+ARR/);
 
     let priorities = [0, 0, 0];
     const departureRunways = match ? match[1].trim().split(/\s+/) : [];
-    console.log(departureRunways);
     for (let i = 0; i < departureRunways.length; i++) {
         if (departureRunways[i] === prefferedRNW.rnw_1) {
             priorities[i] = 1;
@@ -62,6 +62,9 @@ function getPrefferedRNW() {
     for (var i = 1; i < priorities.length; i++) {
         if (priorities[i] < priorities[lowest]) lowest = i;
     }
-    console.log(lowest);
+
+    if (lowest === 0) {
+        return departureRunways[0];
+    }
     return departureRunways[lowest-1];
 }
