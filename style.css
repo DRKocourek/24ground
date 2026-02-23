@@ -10,6 +10,7 @@ body {
     bottom: -7100px;
     left: -6950px;
     width: 13500px;
+    z-index: 0;
 }
 
 #planes {
@@ -32,11 +33,12 @@ body {
 }
 #ITKO {
     position: absolute; 
-    bottom: 3192px; /*3240 3245 3160*/
-    left: -945px;  /*-900 -910 -965*/
+    bottom: 3193px; /*3240 3245 3160*/
+    left: -950px;  /*-900 -910 -965*/
     transform: rotate(90deg); /*85 87 90*/
     width: 495px; /*400 400 525*/
-    height: 635px; /* 0 0 690*/
+    height: 630px; /* 0 0 690*/
+    
 }
 #ILAR {
     position: absolute; 
@@ -197,4 +199,15 @@ select {
     font-size: larger;
     margin-top: 0px;
     margin-left: 20px;
+}
+footer {
+    position: absolute;
+    bottom: 0%;
+    text-align: center;
+    left: 42%;
+
+}
+footer a {
+    color: gray;
+    z-index: 10;
 }

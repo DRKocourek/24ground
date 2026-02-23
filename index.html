@@ -6,6 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="other/logo.svg" type="image/x-icon">
     </head>
     <body>
 
@@ -21,12 +22,12 @@
                 <p id="ifr_clearance" class="IFR_text"></p>
             </div>
             <div id="station_menu" style="display: none;">
-                <select name="airport" id="airport" onchange="selectStation();">
+                <select name="airport" id="airport" onchange="selectStation(); teleportToAirport();">
                     <option value="IRFD">IRFD</option>
                     <option value="IMLR">IMLR</option>
                     <option value="ITKO">ITKO</option>
                     <option value="IPPH">IPPH</option>
-                    <option value="ILAR">IZOL</option>
+                    <option value="IZOL">IZOL</option>
                     <option value="ILAR">ILAR</option>
                     <option value="ISAU">ISAU</option>
                 </select>
@@ -39,10 +40,11 @@
             </div>
         </div>
 
+
         <div id="zoomable">
         <div id="main">
             <div id="map">
-                <img src="other/PTFS_map_dark_runways.png" alt="" id="background">
+                <img src="other/map.png" alt="" id="background">
                 <img src="charts/ITKO.png" alt=""id="ITKO">
                 <img src="charts/ILAR.png" alt="" id="ILAR">
                 <img src="charts/IRFD.png" alt="" id="IRFD">
@@ -69,7 +71,15 @@
                 <polygon points="-174,2199 368,2025 331,1966 -174,2200" style="fill: red;"/>
             </svg>
         </div>-->
+
     </div>
+    <footer>
+        <a href="https://github.com/DRKocourek/24ground">Github</a> | 
+        <a href="https://discord.gg/UDffxdEfBZ">Discord</a> | 
+        <a href="https://24ground.drkocourek.stream/cookie_policy">Cookie policy</a> | 
+        <a href="https://newstatus.drkocourek.stream/">Status</a> | 
+        <p style="display: inline;">v0.1.1 pre-beta</p>
+    </footer>
     </div>
     <div id="cookie_Banner" style="display:none;">
         <h3>Just a heads up!</h3>
@@ -89,5 +99,6 @@
         <script src="scripts/stationSelector.js"></script>
         <script src="scripts/runwayHandler.js"></script>
         <script src="scripts/ifrGenerator.js"></script>
+        <script src="scripts/teleportUser.js"></script>
     </body>
 </html>
