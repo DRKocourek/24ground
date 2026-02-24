@@ -120,7 +120,7 @@ footer {
 }
 #IFR_menu {
     width: 30%;
-    height: 700%;
+    height: 750%;
     background-color: rgb(51, 51, 51);
     margin-left: 0px;
     padding-top: 1px;
@@ -159,6 +159,7 @@ footer {
     padding-right: 25px;
     padding-bottom: 8px;
     margin-right: 10px;
+    margin-bottom: 2px;
     width: fit-content;
 }
 #cookie_Banner {
@@ -228,4 +229,12 @@ footer a {
     font-weight: bold;
     padding-left: 8px;
     padding-right:0px;
+}
+.warning {
+    background-color:orange;
+    border-radius: 7px;
+    width: 500px;
+    margin-left: 10px;
+    padding-left: 0;
+    padding-right: 20px;
 }

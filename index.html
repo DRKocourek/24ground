@@ -24,10 +24,14 @@
                 </select>
                 <label for="initial">Initial Climb:</label>
                 <input type="text" name="initial" id="initial_climb">
+                <br>
+                <label for="use_semicircular" style="padding-left: 20px;">Ignore semi-circular rule</label>
+                <input type="checkbox" id="use_semicircular" onchange="toggleRule();" value="off" unchecked>
                 <p id="ifr_clearance" class="IFR_text">Select aircraft first before doing IFR clearance!</p>
+                <p class="warning" id="semicircular_warning">Warning: this plane's flightlevel is not correct with the semi-circular rule!</p>
             </div>
             <div id="station_menu" style="display: none;">
-                <select name="airport" id="airport" style="margin-bottom:0px;"onchange="selectStation(); teleportToAirport();">
+                <select name="airport" id="airport" style="margin-bottom:0px;"onchange="selectStation(); teleportToAirport(); generateIFR();">
                     <option value="IRFD" default>IRFD</option>
                     <option value="IMLR">IMLR</option>
                     <option value="ITKO">ITKO</option>
@@ -105,5 +109,6 @@
         <script src="scripts/runwayHandler.js"></script>
         <script src="scripts/ifrGenerator.js"></script>
         <script src="scripts/teleportUser.js"></script>
+        <script src="scripts/bearingCalculator.js"></script>
     </body>
 </html>

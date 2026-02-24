@@ -13,6 +13,8 @@ function toggleIFRmenu() {
     }
     generateIFR
 }
+let incorrect_FL  = false;
+let need_odd_alt = false;
 function generateIFR() {
     const flp = flightplans.find(fp => fp.callsign === selectedAcft);
     const variables = {
@@ -32,8 +34,29 @@ function generateIFR() {
     const result = template.replace(/{(\w+)}/g, (_, key) => variables[key]);
     IFRslot.textContent = result;
 
-    console.log(result);
-
+    let departure_heading = calculateAbsBearing(flp.departing, flp.arriving);
+    need_odd_alt = false;
+    if (departure_heading >= 180) {
+        need_odd_alt = false;
+    } else {
+        need_odd_alt = true;
+    }
+    let even;
+    if(Math.floor(Number(flp.flightlevel)/10) % 2 === 0) {
+        even = true;
+    } else {
+        even = false;
+    }
+    if (need_odd_alt && even) {
+        incorrect_FL = true;
+        console.log('need odd fl');
+    } else if(!need_odd_alt && !even) {
+        incorrect_FL = true;
+        console.log('need even fl');
+    } else {
+        incorrect_FL = false;
+    }
+    toggleRule();
 
     
 }
@@ -68,3 +91,25 @@ function getPrefferedRNW() {
     }
     return departureRunways[lowest-1];
 }
+
+let warning_semicircular = document.getElementById('semicircular_warning');
+let use_semicircular = document.getElementById('use_semicircular');
+
+function toggleRule() {
+    if (use_semicircular.checked === true) {
+        warning_semicircular.style.display = "none";
+    } else {
+        if(incorrect_FL) {
+            warning_semicircular.style.display = "";
+            if(need_odd_alt) {
+                warning_semicircular.textContent = "Warning: this plane's flightlevel is not correct with the semi-circular rule! Give them an odd FL!";
+            } else {
+                warning_semicircular.textContent = "Warning: this plane's flightlevel is not correct with the semi-circular rule! Give them an even FL!";
+
+            }
+        } else {
+            warning_semicircular.style.display = "none";
+        }
+    }
+}
+toggleRule();

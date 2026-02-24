@@ -1,5 +1,6 @@
 let selectedAcft;
 let previousElement = null;
+let ifrCallsign = document.getElementById('ifr_callsign');
 function selectAcft(acft) {
     const ifrCallsign = document.getElementById("ifr_callsign");
     selectedAcft = acft;
