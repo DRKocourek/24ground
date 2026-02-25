@@ -109,13 +109,14 @@ function positionPlanes(message) {
   //create and place the elements onto the map
     let coordinates = worldToMap(plane.position.x, plane.position.y);
     const img = document.createElement('img');
-    img.width = 20;
-    img.src = "other/airplane_gradient.png";
+    let acft_width = getWidthByICAO(plane.aircraftType)
+    img.width = acft_width;
     img.style.position = "absolute";
-    img.style.top= `${coordinates.y}px`;
-    img.style.left = `${coordinates.x}px`;
-    img.style.transform = `rotate(${plane.heading-45}deg)`;
-    img.setAttribute("class", planeId);
+    img.style.top= `${coordinates.y + (17 -acft_width)}px`;
+    img.style.left = `${coordinates.x + (19-acft_width)}px`;
+    img.style.transform = `rotate(${plane.heading}deg)`;
+    img.style.filter = "filter: brightness(0) saturate(100%) invert(99%) sepia(39%) saturate(0%) hue-rotate(233deg) brightness(115%) contrast(100%);";
+    img.setAttribute("class", planeId + " aircraft");
     img.dataset.id = planeId;
     const callsign = document.createElement("p");
     const flp = flightplans.find(fp => fp.robloxName === plane.playerName);
@@ -133,6 +134,8 @@ function positionPlanes(message) {
     callsign.style.top = `${coordinates.y}px`;
     callsign.style.left = `${coordinates.x}px`;
     callsign.setAttribute("class", planeId);
+
+    img.src = getIconByICAO(plane.aircraftType);
 
     let planediv = document.getElementById("planes");
     planediv.appendChild(img);
