@@ -5,7 +5,6 @@ function selectAcft(acft) {
     const ifrCallsign = document.getElementById("ifr_callsign");
     selectedAcft = acft;
     generateIFR();
-    console.log(selectedAcft);
     ifrCallsign.textContent = selectedAcft;
     let selectedElement = document.getElementsByClassName(acft)[1];
     if (!selectedElement) return;

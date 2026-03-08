@@ -112,8 +112,13 @@ function positionPlanes(message) {
     let acft_width = getWidthByICAO(plane.aircraftType)
     img.width = acft_width;
     img.style.position = "absolute";
-    img.style.top= `${coordinates.y + (17 -acft_width)}px`;
-    img.style.left = `${coordinates.x + (19-acft_width)}px`;
+    if(acft_width <= 10) {
+      img.style.top= `${coordinates.y + (20 -acft_width)*0.55}px`;
+      img.style.left = `${coordinates.x + (20-acft_width)*.8}px`;
+    } else {
+      img.style.top= `${coordinates.y + (20 -acft_width)*.40}px`;
+      img.style.left = `${coordinates.x + (20-acft_width)}px`;
+    }
     img.style.transform = `rotate(${plane.heading}deg)`;
     img.style.filter = "filter: brightness(0) saturate(100%) invert(99%) sepia(39%) saturate(0%) hue-rotate(233deg) brightness(115%) contrast(100%);";
     img.setAttribute("class", planeId + " aircraft");
