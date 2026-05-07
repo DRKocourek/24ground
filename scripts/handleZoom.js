@@ -8,10 +8,11 @@ document.addEventListener("wheel", function (e) {
   e.preventDefault();
 
   if (e.deltaY > 0) {
-    zoom = Math.max(MIN_ZOOM, zoom - ZOOM_SPEED);
+    zoom = Math.max(MIN_ZOOM, zoom - (ZOOM_SPEED * (zoom/0.2))); //(ZOOM_SPEED * (zoom/0.2)) makes the zooming feel smoother
   } else {
-    zoom = Math.min(MAX_ZOOM, zoom + ZOOM_SPEED);
+    zoom = Math.min(MAX_ZOOM, zoom + (ZOOM_SPEED * (zoom/0.2)));
   }
+  //console.log(zoom);
 
   zoomElement.style.transform = `scale(${zoom})`;
 }, { passive: false });

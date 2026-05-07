@@ -7,9 +7,8 @@ body {
 }
 #background {
     position: absolute;
-    bottom: -7100px;
-    left: -6950px;
-    width: 13500px;
+    width: 9000px;
+    transform: translate(-4600px, -4280px) scaleX(1) scaleY(1.163);
     z-index: 0;
 }
 
@@ -33,10 +32,10 @@ body {
 }
 #ITKO {
     position: absolute; 
-    bottom: 3193px; /*3240 3245 3160*/
-    left: -943px;  /*-900 -910 -965*/
+    bottom: 3197px; /*3240 3245 3160*/
+    left: -940px;  /*-900 -910 -965*/
     transform: rotate(90deg); /*85 87 90*/
-    width: 495px; /*400 400 525*/
+    width: 490px; /*400 400 525*/
     height: 630px; /* 0 0 690*/
     
 }
@@ -241,4 +240,9 @@ footer a {
 
 .aircraft {
     filter: brightness(0) saturate(100%) invert(79%) sepia(79%) saturate(656%) hue-rotate(155deg) brightness(102%) contrast(108%);
+}
+#runway_warning {
+    position:absolute;
+    transform: scale(0.5) translate(-2100px, -7015px) rotate(55deg);
+    z-index: 10;
 }

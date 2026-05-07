@@ -4,7 +4,9 @@ const acft_to_icon = [
     {icao: "AIRBUS A220", icon: "a320.svg", width: 9},
     {icao: "AIRBUS A320", icon: "a320.svg", width: 9},
     {icao: "AIRBUS A330", icon: "a330.svg", width: 11},
-    {icao: "AIRBUS A330F", icon: "a330.svg", width: 11},
+    {icao: "AIRBUS A330 CARGO", icon: "a330.svg", width: 11},
+    {icao: "A330 MRTT", icon: "a330.svg", width: 11},
+
     {icao: "AIRBUS A340", icon: "a340.svg", width: 12},
     //generic icons for A350
     {icao: "AIRBUS A350", icon: "a4.svg", width: 13},
@@ -20,8 +22,8 @@ const acft_to_icon = [
     {icao: "BOEING 747 CARGO", icon: "b747.svg", width: 12},
     {icao: "BOEING 747", icon: "b747.svg", width: 12},
     //generic icon for 757
-    {icao: "BOEING 757 CARGO", icon: "a3.svg"},
-    {icao: "BOEING 757", icon: "a3.svg"},
+    {icao: "BOEING 757 CARGO", icon: "a3.svg", width: 9},
+    {icao: "BOEING 757", icon: "a3.svg", width: 9},
     {icao: "BOEING 767 CARGO", icon: "b767.svg"},
     {icao: "BOEING 767", icon: "b767.svg", width: 9},
     {icao: "BOEING 777 CARGO", icon: "b777.svg", width: 13},
@@ -36,9 +38,13 @@ const acft_to_icon = [
     {icao: "C17", icon: "c130.svg", width: 13},
 
     //cessnas
-    {icao: "CESSNA 172", icon: "cessna.svg", width: 3},
-    {icao: "CESSNA 172 STUDENT", icon: "cessna.svg", width: 3},
-    {icao: "CESSNA 402", icon: "cessna.svg", width: 3}, 
+    {icao: "CESSNA 172", icon: "cessna.svg", width: 4},
+    {icao: "CESSNA 172 STUDENT", icon: "cessna.svg", width: 4},
+    {icao: "CESSNA 402", icon: "cessna.svg", width: 4}, 
+    {icao: "CESSNA CARAVAN CARGO", icon: "cessna.svg", width: 5},
+    {icao: "CESSNA CARAVAN", icon: "cessna.svg", width: 5}, 
+
+
 
     //lotta CRJs
     {icao: "BOMBARDIER CRJ700", icon: "crjx.svg", width: 6},
@@ -109,7 +115,7 @@ const acft_to_icon = [
 function getIconByICAO(rcv_icao) {
     let iconAvailable = acft_to_icon.find(icon => icon.icao === rcv_icao.toUpperCase());
     if(iconAvailable === undefined) {
-        console.log(rcv_icao);
+        //console.log(rcv_icao);
         return icon_path + "a0.svg";
     } else {
         return icon_path + iconAvailable.icon;
@@ -120,7 +126,7 @@ function getIconByICAO(rcv_icao) {
 function getWidthByICAO(rcv_icao) {
     let iconAvailable = acft_to_icon.find(icon => icon.icao === rcv_icao.toUpperCase());
     if(iconAvailable === undefined || iconAvailable.width === undefined) {
-        console.log(rcv_icao);
+        //console.log(rcv_icao);
         return 12;
     } else {
         return iconAvailable.width;
