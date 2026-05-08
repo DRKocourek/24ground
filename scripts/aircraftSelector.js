@@ -1,11 +1,14 @@
 let selectedAcft;
 let previousElement = null;
 let ifrCallsign = document.getElementById('ifr_callsign');
+let flpCallsign = document.getElementById('flp_callsign');
+
 function selectAcft(acft) {
-    const ifrCallsign = document.getElementById("ifr_callsign");
     selectedAcft = acft;
     generateIFR();
+    displayFlightplan();
     ifrCallsign.textContent = selectedAcft;
+    flpCallsign.textContent = selectedAcft;
     let selectedElement = document.getElementsByClassName(acft)[1];
     if (!selectedElement) return;
     if (previousElement) {

@@ -16,7 +16,8 @@
 
             <p onclick="toggleStationMenu();" style="margin-left: 23%;">Select station</p>
             
-            <p style="margin-left: 7.5%;">Taxi Instruc</p>
+            <p onclick="toggleFlpMenu()" style="margin-left: 8%;">Flight plan</p>
+
             <div id="IFR_menu" style="display: none;">
                 <p id="ifr_callsign" class="IFR_text">Select aircraft first!</p>
                 <select name="IFR_rnw" id="rnw_select" onchange="generateIFR();">
@@ -46,6 +47,20 @@
                     <option value="TWR">TWR</option>
                     <option value="GND" id="GND_station">GND</option>
                 </select>
+            </div>
+            <div id="flightplan_menu" style="display: none;">
+                <p id="flp_callsign" class="IFR_text">Select aircraft first!</p>
+                <label for="acft_type">Type:</label>
+                    <p id="acft_type" class="IFR_text">A320</p>
+                <br>           
+                <label for="dep_apt" style="margin-left: 20px;">DEP:</label>
+                    <p id="dep_apt" class="IFR_text">IKLF</p>
+                <label for="arr_apt">ARR:</label>
+                    <p id="arr_apt" class="IFR_text">IRFD</p>
+                <p class="IFR_text" id="cruise">FL040</p>
+                <p class="IFR_text" id="flight_rules">IFR</p>
+
+                <p id="route" class="IFR_text">Route will appear here</p>
             </div>
         </div>
 
@@ -87,15 +102,17 @@
             </svg>
         </div>-->
 
+
+    </div>
+
     </div>
     <footer>
         <a href="https://github.com/DRKocourek/24ground">Github</a> | 
         <a href="https://discord.gg/UDffxdEfBZ">Discord</a> | 
         <a href="https://24ground.drkocourek.stream/cookie_policy">Cookie policy</a> | 
         <a href="https://status.drkocourek.stream/">Status</a> | 
-        <p style="display: inline;">v0.1.5 pre-beta</p>
+        <p style="display: inline;">v0.1.6 pre-beta</p>
     </footer>
-    </div>
     <div id="cookie_Banner" style="display:none;">
         <h3>Just a heads up!</h3>
         <p>24ground uses cookies for storing your preferences, your IFR clearance format and maybe authentication. All of that data (except for authentication) never leaves your device!</p>
@@ -118,5 +135,6 @@
         <script src="scripts/teleportUser.js"></script>
         <script src="scripts/bearingCalculator.js"></script>
         <script src="scripts/detect_Runway.js"></script>
+        <script src="scripts/flightPlanViewer.js"></script>
     </body>
 </html>

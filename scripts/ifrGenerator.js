@@ -27,9 +27,9 @@ function generateIFR() {
         runway: rnw_select.value, 
         atis: atis.find(info => info.airport === airport.value).letter,
         squawk: Math.floor(Math.random() * (6999 - 3000) + 3000),
-        initial: initial_climb.value,
+        initial: Number(initial_climb.value) * 100,
     };
-    const template = "{callsign}, good day. Information {atis} is in effect. Cleared to {arriving} via {route}, expect runway {runway} for departure. Initial climb to FL{initial}, expect further climb to FL{cruising} {minutes} minutes after depature. Squawk {squawk}.";
+    const template = "{callsign}, good day. Information {atis} is current. Cleared to {arriving} via {route}, expect runway {runway} for departure. Initial altitude to {initial}ft, expect further climb to FL{cruising} {minutes} minutes after depature. Squawk {squawk}.";
     //this line is vibe coded lmao
     const result = template.replace(/{(\w+)}/g, (_, key) => variables[key]);
     IFRslot.textContent = result;
@@ -49,10 +49,8 @@ function generateIFR() {
     }
     if (need_odd_alt && even) {
         incorrect_FL = true;
-        console.log('need odd fl');
     } else if(!need_odd_alt && !even) {
         incorrect_FL = true;
-        console.log('need even fl');
     } else {
         incorrect_FL = false;
     }
