@@ -25,6 +25,11 @@ const airportPositions = [
         icao: "IPPH"
     },
     {
+        x: 4950,
+        y: 557,
+        icao: "IKFL"
+    },
+    {
         x: -3256,
         y: -150,
         icao: "IZOL"

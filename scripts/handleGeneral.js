@@ -1,6 +1,7 @@
 let flp_ws;
 let flightplans;
 let atis;
+let controller_change
 async function setupGeneralWS() {
   await serverPromise;
     flp_ws = new WebSocket(server_url + "/api/general");
@@ -13,9 +14,12 @@ async function setupGeneralWS() {
       const message = JSON.parse(event.data);
       if (message.type === "FLIGHT_PLAN") {
         flightplans = message.data;
-      } else {
+      } else if (message.type === "ATIS") {
         atis = message.data;
         selectStation();
+      } else if (message.type === "CONTROLLERS") {
+        controller_change = message.data;
+        handleControllers();
       }
     }
     flp_ws.onclose = () => {

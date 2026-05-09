@@ -37,6 +37,7 @@
                     <option value="IMLR">IMLR</option>
                     <option value="ITKO">ITKO</option>
                     <option value="IPPH">IPPH</option>
+                    <option value="IKFL">IKFL</option>
                     <option value="IZOL">IZOL</option>
                     <option value="ILAR">ILAR</option>
                     <option value="ISAU">ISAU</option>
@@ -64,7 +65,11 @@
             </div>
         </div>
 
-
+        <div id="controllers">
+            <p id="CTR">CTR: offline</p>
+            <p id="TWR">TWR: offline</p>
+            <p id="GND">GND: offline</p>
+        </div>
         <div id="zoomable">
         <div id="main">
 
@@ -72,24 +77,14 @@
                 <img src="other/expensive.svg" alt="" id="background">
                 <img src="charts/ITKO.png" alt=""id="ITKO">
                 <img src="charts/ILAR.png" alt="" id="ILAR">
-                <img src="charts/IRFD.png" alt="" id="IRFD">
+                <img src="charts/IRFD.svg   " alt="" id="IRFD">
                 <img src="charts/IPPH.png" alt="" id="IPPH">
+                <img src="charts/IKFL.svg" alt="" id="IKFL">
+
             </div>
 
         <div id="planes">
 
-        </div>
-        <div id="taxiways">
-            <div id="IRFD_taxi">
-                <p style="position: absolute; bottom: -2315px; left: -350px;">A1</p>
-                <p style="position: absolute; bottom: -2307px; left: -315px;">A</p>
-                <p style="position: absolute; bottom: -2302px; left: -330px;">A2</p>
-                <p style="position: absolute; bottom: -2265px; left: -225px;">A</p>
-                <p style="position: absolute; bottom: -2285px; left: -361px;">B</p>
-                <p style="position: absolute; bottom: -2250px; left: -380px;">B1</p>
-                <p style="position: absolute; bottom: -2235px; left: -358px;">B2</p>
-                <p style="position: absolute; bottom: -2297px; left: -315px;">C</p>
-            </div>
         </div>
             <!--<object
             data="other/runway_warning.svg"
@@ -111,7 +106,7 @@
         <a href="https://discord.gg/UDffxdEfBZ">Discord</a> | 
         <a href="https://24ground.drkocourek.stream/cookie_policy">Cookie policy</a> | 
         <a href="https://status.drkocourek.stream/">Status</a> | 
-        <p style="display: inline;">v0.1.6 pre-beta</p>
+        <p style="display: inline;">v0.2 open beta</p>
     </footer>
     <div id="cookie_Banner" style="display:none;">
         <h3>Just a heads up!</h3>
@@ -136,5 +131,6 @@
         <script src="scripts/bearingCalculator.js"></script>
         <script src="scripts/detect_Runway.js"></script>
         <script src="scripts/flightPlanViewer.js"></script>
+        <script src="scripts/controllerDisplay.js"></script>
     </body>
 </html>

@@ -1,16 +1,16 @@
 const icon_path = "/acft/"
 const acft_to_icon = [
     //airbus lineup
-    {icao: "AIRBUS A220", icon: "a320.svg", width: 9},
-    {icao: "AIRBUS A320", icon: "a320.svg", width: 9},
+    {icao: "AIRBUS A220", icon: "a320.svg", width: 8},
+    {icao: "AIRBUS A320", icon: "a320.svg", width: 8},
     {icao: "AIRBUS A330", icon: "a330.svg", width: 11},
     {icao: "AIRBUS A330 CARGO", icon: "a330.svg", width: 11},
     {icao: "A330 MRTT", icon: "a330.svg", width: 11},
 
     {icao: "AIRBUS A340", icon: "a340.svg", width: 12},
     //generic icons for A350
-    {icao: "AIRBUS A350", icon: "a4.svg", width: 13},
-    {icao: "AIRBUS A380", icon: "a380.svg", width: 17},
+    {icao: "AIRBUS A350", icon: "a4.svg", width: 11},
+    {icao: "AIRBUS A380", icon: "a380.svg", width: 14},
     //beluga generic icons
     {icao: "AIRBUS BELUGA", icon: "a3.svg", width: 12},
     //generic icons for the 707 and 727
@@ -26,9 +26,9 @@ const acft_to_icon = [
     {icao: "BOEING 757", icon: "a3.svg", width: 9},
     {icao: "BOEING 767 CARGO", icon: "b767.svg"},
     {icao: "BOEING 767", icon: "b767.svg", width: 9},
-    {icao: "BOEING 777 CARGO", icon: "b777.svg", width: 13},
-    {icao: "BOEING 777", icon: "b777.svg", width: 13},
-    {icao: "BOEING 787", icon: "b787.svg", width: 12},
+    {icao: "BOEING 777 CARGO", icon: "b777.svg", width: 12},
+    {icao: "BOEING 777", icon: "b777.svg", width: 12},
+    {icao: "BOEING 787", icon: "b787.svg", width: 11},
     {icao: "DREAMLIFTER", icon: "b747.svg", widht: 13},
     //something something
     {icao: "C130", icon: "c130.svg"},
@@ -51,14 +51,14 @@ const acft_to_icon = [
     {icao: "CRJ", icon: "crjx.svg"},
     {icao: "CRJX", icon: "crjx.svg"},
 
-    {icao: "BOMBARDIER Q400", icon: "dh8a.svg"},
+    {icao: "BOMBARDIER Q400", icon: "dh8a.svg", width: 6},
     //lotta names for DH-8
-    {icao: "DH-8", icon: "dh8a.svg"},
-    {icao: "DH 8", icon: "dh8a.svg"},
-    {icao: "DHC-8 TWIN OTTER", icon: "dh8a.svg"},
-    {icao: "DHC-6 TWIN OTTER", icon: "dh8a.svg"},
+    {icao: "DH-8", icon: "dh8a.svg", width: 6},
+    {icao: "DH 8", icon: "dh8a.svg", width: 6},
+    {icao: "DHC-8 TWIN OTTER", icon: "dh8a.svg", width: 5},
+    {icao: "DHC-6 TWIN OTTER", icon: "dh8a.svg", width: 6},
     // no E190 specific icons :( so E195 it is cuz close enough
-    {icao: "E190", icon: "e195.svg", width: 9},
+    {icao: "E190", icon: "e195.svg", width: 6},
     {icao: "E195", icon: "e195.svg"},
     {icao: "DOUGLAS MD11", icon: "md11.svg"},
     //RIP concorde, gets a generic icon
@@ -68,6 +68,10 @@ const acft_to_icon = [
     {icao: "AN 225", icon: "a5.svg", width: 20},
     //ATRs
     {icao: "ATR72", icon: "dh8a.svg", width: 12},
+
+    
+    {icao: "EXTRA 300S", icon: "cessna.svg", width: 4},
+
 
     // WHY IS THERE SO MANY FUCKING MILITARY AIRCRAFT ON ATC24
     //prop planes
@@ -99,9 +103,9 @@ const acft_to_icon = [
     {icao: "E-3", icon: "a5.svg"},
     {icao: "E-3 SENTRY", icon: "a5.svg"},
     {icao: "E3 SENTRY", icon: "a5.svg"},
-    {icao: "A10", icon: "a2.svg"},
-    {icao: "A10 WARTHOG", icon: "a2.svg"},
-    {icao: "A10 WARTHOG", icon: "a2.svg"},
+    {icao: "A10", icon: "a1.svg"},
+    {icao: "A10 WARTHOG", icon: "a1.svg"},
+    {icao: "A10 WARTHOG", icon: "a.svg"},
 
     //HELICOPTER HELICOPTER... PARACOPER PARACOPER
     {icao: "H135", icon: "a7.svg", width: 6},    

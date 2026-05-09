@@ -112,12 +112,15 @@ function positionPlanes(message) {
     let acft_width = getWidthByICAO(plane.aircraftType);
     img.width = acft_width;
     img.style.position = "absolute";
-    if(acft_width <= 10) {
-      img.style.top= `${coordinates.y + (20 -acft_width)*0.55}px`;
+    if (acft_width <= 6) {
+      img.style.top= `${coordinates.y + (20 -acft_width)*0.4}px`;
+      img.style.left = `${coordinates.x + (20-acft_width)*.75}px`;
+    } else if(acft_width <= 10) {
+      img.style.top= `${coordinates.y + (20 -acft_width)*0.4}px`;
       img.style.left = `${coordinates.x + (20-acft_width)*.8}px`;
     } else {
       img.style.top= `${coordinates.y + (20 -acft_width)*.40}px`;
-      img.style.left = `${coordinates.x + (20-acft_width)}px`;
+      img.style.left = `${coordinates.x + (20-acft_width)* 0.85}px`;
     }
 
     img.style.transform = `rotate(${plane.heading}deg)`;
@@ -143,7 +146,7 @@ function positionPlanes(message) {
     callsign.style.position = "absolute";
     callsign.style.top = `${coordinates.y}px`;
     callsign.style.left = `${coordinates.x}px`;
-    callsign.setAttribute("class", planeId);
+    callsign.setAttribute("class", planeId + " callsign");
 
     img.src = getIconByICAO(plane.aircraftType);
 

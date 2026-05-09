@@ -2,7 +2,7 @@ const zoomElement = document.getElementById("zoomable");
 let zoom = 1;
 const ZOOM_SPEED = 0.1;
 const MIN_ZOOM = 0.1;
-const MAX_ZOOM = 5;
+const MAX_ZOOM = 15;
 
 document.addEventListener("wheel", function (e) {
   e.preventDefault();

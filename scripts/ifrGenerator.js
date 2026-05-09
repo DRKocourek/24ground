@@ -2,6 +2,7 @@ let IFRToggle = false;
 let IFRMenu = document.getElementById("IFR_menu");
 let IFRslot = document.getElementById("ifr_clearance");
 let initial_climb = document.getElementById("initial_climb");
+let no_flp = false;
 initial_climb.value = "020";
 function toggleIFRmenu() {
     if(IFRToggle) {
@@ -16,6 +17,7 @@ function toggleIFRmenu() {
 let incorrect_FL  = false;
 let need_odd_alt = false;
 function generateIFR() {
+    try {
     const flp = flightplans.find(fp => fp.callsign === selectedAcft);
     const variables = {
         callsign: selectedAcft,
@@ -29,6 +31,8 @@ function generateIFR() {
         squawk: Math.floor(Math.random() * (6999 - 3000) + 3000),
         initial: Number(initial_climb.value) * 100,
     };
+    no_flp = false;
+
     const template = "{callsign}, good day. Information {atis} is current. Cleared to {arriving} via {route}, expect runway {runway} for departure. Initial altitude to {initial}ft, expect further climb to FL{cruising} {minutes} minutes after depature. Squawk {squawk}.";
     //this line is vibe coded lmao
     const result = template.replace(/{(\w+)}/g, (_, key) => variables[key]);
@@ -53,6 +57,10 @@ function generateIFR() {
         incorrect_FL = true;
     } else {
         incorrect_FL = false;
+    }
+    } catch(err) {
+        no_flp = true;
+        return;
     }
     toggleRule();
 
