@@ -1,7 +1,8 @@
 let flp_ws;
 let flightplans;
 let atis;
-let controller_change
+let controller_change;
+let airport_change = true;
 async function setupGeneralWS() {
   await serverPromise;
     flp_ws = new WebSocket(server_url + "/api/general");

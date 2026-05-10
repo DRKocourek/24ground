@@ -9,6 +9,9 @@ let rnw_select = document.getElementById("rnw_select");
 airport.value = "IRFD";
 async function selectStation() {
     fetchControllers();
+    airport_change = true;
+    atisHandler();
+
     if (GND_airports.includes(airport.value)) {
         GND.style = "";
     } else {

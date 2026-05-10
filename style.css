@@ -95,7 +95,7 @@ body {
 }
 
 #top_bar {
-    z-index: 5;
+    z-index: 10;
     background-color:rgb(51, 51, 51);
     width: 99%;
     height: 40px;
@@ -156,6 +156,38 @@ footer {
     opacity: 0.8;
     z-index: 10;
 }
+#atis_menu {
+    width: 22.5%;
+    height: 800%;
+    background-color: rgb(51, 51, 51);
+    top: 130%;
+    left: 77.5%;
+    position: absolute;
+    margin-left: 0px;
+    padding-top: 1px;
+    border-radius: 15px;
+    font-family: monospace;
+    font-size: 16px;
+    backdrop-filter:blur(8px);
+    opacity: 0.8;
+    z-index: 10;
+}
+#atis_menu_GND {
+    width: 22.5%;
+    height: 500%;
+    background-color: rgb(51, 51, 51);
+    top: 130%;
+    left: 77.5%;
+    position: absolute;
+    margin-left: 0px;
+    padding-top: 1px;
+    border-radius: 15px;
+    font-family: monospace;
+    font-size: 16px;
+    backdrop-filter:blur(8px);
+    opacity: 0.8;
+    z-index: 10;
+}
 .IFR_text p:hover {
     cursor: pointer;
 }
@@ -172,6 +204,22 @@ footer {
     width: fit-content;
     max-width: 86%;
 }
+.ATIS_text {
+    background-color: black;
+    border-radius: 8px;
+    padding-top: 3px;
+    margin-left: 15px;
+    padding-right: 25px;
+    padding-bottom: 8px;
+    margin-right: 0px;
+    margin-bottom: 2px;
+    width: 50%;
+    height: 65%;
+    left: 30%;
+    top: 20%;
+    position: absolute;    
+}
+
 
 #flightplan_menu {
     position: absolute;
@@ -256,6 +304,44 @@ footer a {
     padding-left: 8px;
     padding-right:0px;
 }
+.runways {
+    background-color: black;
+    border: none;
+    border-radius: 7px;
+    font-size: x-large;
+    width: 120px;
+    color:white;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-right:0px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+#copy_command {
+    position: absolute;
+    left: 1.5%;
+    top: 85%;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+#charts_link {
+    background-color: black;
+    border: none;
+    border-radius: 7px;
+    font-size: x-large;
+    width: 120px;
+    color:white;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-right:0px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
 .warning {
     background-color:orange;
     border-radius: 7px;
@@ -284,5 +370,20 @@ footer a {
 #controllers {
     position: absolute;
     left: 84%;
-    z-index: 10;
+    z-index: 5;
+}
+
+#atis_notification_text {
+    color: black;
+    background-color: yellow;
+    border-radius: 10px;
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    position: absolute;
+    left: 45%;
+    top: 80%;
+    z-index: 3;
 }
