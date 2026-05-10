@@ -4,23 +4,31 @@ let ctr_text = document.getElementById("CTR");
 let twr_text = document.getElementById("TWR");
 let gnd_text = document.getElementById("GND");
 let previous_controllers = ["", "", ""];
+let airportChange = "IRFD";
 
 async function fetchControllers() {
+    previous_controllers = [...airport_controllers];
     let response = await fetch("https://somedoctorapi-eu-prg01.drkocourek.stream/api/controllers");
     controllers = await response.json();
     for(let i = 0; i < controllers.length; i++) {
-        if(controllers[i].airport === airport.value && controllers[i].holder != null) {
+        if(controllers[i].airport === airport.value) {
             airport_controllers[1] = controllers[i].holder;
+            if(airport.value === "IMLR") {
+                airport_controllers[0] = controllers[i-3].holder;
+            }else {
             if(controllers[i-1].holder != null) {
                 airport_controllers[0] = controllers[i-1].holder;
             } else {
                 airport_controllers[0] = null;
             }
+            }
             if(controllers[i+1].airport === airport.value && controllers[i+1].holder != null) {
                 airport_controllers[2] = controllers[i+1].holder;
+                console.log(controllers[i+1].airport);
                 break;
             } else {
                 airport_controllers[2] = null;
+                break;
             }
         } else {
             airport_controllers[1] = null;
@@ -38,21 +46,39 @@ async function fetchControllers() {
     if(airport_controllers[2] === null){
         gnd_text.textContent = "GND: offline";
     }
+    if(airport.value === airportChange) {
+    if(airport_controllers[0] != previous_controllers[0]) {
+        if(previous_controllers[0] != "") {
+            controllerChanged("CTR", airport_controllers[0]);
+        }
+    } else if(airport_controllers[1] != previous_controllers[1]) {
+        controllerChanged("TWR", airport_controllers[1]);
+    } else if(airport_controllers[2] != previous_controllers[2]) {
+        controllerChanged("GND", airport_controllers[2]);
+    }
+    } else {
+        airportChange = airport.value;
+    }
 }
-fetchControllers();
 
 async function handleControllers() {
-    previous_controllers = airport_controllers;
+    previous_controllers = [...airport_controllers];
     for(let i = 0; i < controller_change.length; i++) {
-        if(controller_change[i].airport === airport.value && controller_change[i].holder != null) {
+        if(controller_change[i].airport === airport.value) {
             airport_controllers[1] = controller_change[i].holder;
             if(controller_change[i-1].holder != null) {
                 airport_controllers[0] = controller_change[i-1].holder;
-            }
-            if(controller_change[i+1].airport === airport.value && controllers[i+1].holder != null) {
-                airport_controllers[2] = controller_change[i+1].holder;
-                break;
+            } else {
+                airport_controllers[0] = null;
             } 
+            if(controller_change[i+1].airport === airport.value) {
+                airport_controllers[2] = controller_change[i+1].holder;
+                console.log(controllers[i+1].airport);
+                break;
+            } else {
+                airport_controllers[2] = null;
+                break;
+            }
         }
     }
     ctr_text.textContent = "CTR: " + airport_controllers[0];
