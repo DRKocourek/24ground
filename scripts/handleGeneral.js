@@ -25,10 +25,10 @@ async function setupGeneralWS() {
     }
     flp_ws.onclose = () => {
       console.log("General websocket closed, reconnecting in 3 seconds...");
-      setTimeout(    
+      setTimeout( () => {
         ws = new WebSocket(server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"),
         3000
-      );
+      });
     }
 
 
