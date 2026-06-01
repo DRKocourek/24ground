@@ -2,10 +2,10 @@ const obj = document.getElementById("runway_warning");
 
 let svg, runway;
 
-obj.addEventListener("load", () => {
+/*obj.addEventListener("load", () => {
     svg = obj.contentDocument.querySelector("svg");
     runway = svg.getElementById("runway_shape");
-});
+});*/
 
 function isOnApproach(clientX, clientY) {
     if (!svg || !runway) return false;

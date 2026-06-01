@@ -8,17 +8,26 @@ const flightrules_text = document.getElementById("flight_rules");
 const route_text = document.getElementById("route");
 
 
+let flightplan_error = document.getElementById("flightplan_error_text");
+
+let error_sound = new Audio("sfx/error.wav");
 
 
-function displayFlightplan() {
-    const flp = flightplans.find(fp => fp.callsign === selectedAcft);
-    acft_type_text.textContent = flp.aircraft;
-    dep_apt_text.textContent = flp.departing;
-    arr_apt_text.textContent = flp.arriving;
-    cruising_text.textContent = "FL" + flp.flightlevel;
-    flightrules_text.textContent = flp.flightrules;
-    route_text.textContent = flp.route;
-
+async function displayFlightplan() {
+    try {
+        const flp = flightplans.find(fp => fp.callsign === selectedAcft);
+        acft_type_text.textContent = flp.aircraft;
+        dep_apt_text.textContent = flp.departing;
+        arr_apt_text.textContent = flp.arriving;
+        cruising_text.textContent = "FL" + flp.flightlevel;
+        flightrules_text.textContent = flp.flightrules;
+        route_text.textContent = flp.route;
+    } catch(err) {
+        error_sound.play();
+        flightplan_error.style="";
+        await sleep(6000);
+        flightplan_error.style="display: none;";
+    }
 }
 
 function toggleFlpMenu() {

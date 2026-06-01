@@ -16,6 +16,11 @@ function toggleIFRmenu() {
 }
 let incorrect_FL  = false;
 let need_odd_alt = false;
+let template;
+
+
+template = localStorage.getItem("IFR_format");        
+
 function generateIFR() {
     try {
     const flp = flightplans.find(fp => fp.callsign === selectedAcft);
@@ -33,7 +38,6 @@ function generateIFR() {
     };
     no_flp = false;
 
-    const template = "{callsign}, good day. Information {atis} is current. Cleared to {arriving} via {route}, expect runway {runway} for departure. Initial altitude to {initial}ft, expect further climb to FL{cruising} {minutes} minutes after depature. Squawk {squawk}.";
     //this line is vibe coded lmao
     const result = template.replace(/{(\w+)}/g, (_, key) => variables[key]);
     IFRslot.textContent = result;

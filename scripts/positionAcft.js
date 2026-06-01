@@ -17,10 +17,10 @@ async function setup() {
     }
     ws.onclose = () => {
       console.log("Acft data websocket closed, reconnecting in 3 seconds...");
-      setTimeout(    
+      setTimeout( () => {   
         ws = new WebSocket(server_url.replace(/^https?:\/\//, "wss://") + "/api/acft-data"),
         3000
-      );
+      });
     }
 
 
@@ -109,6 +109,9 @@ function positionPlanes(message) {
   //create and place the elements onto the map
     let coordinates = worldToMap(plane.position.x, plane.position.y);
     const img = document.createElement('img');
+    if(planeId === "Sus-6517") {
+      console.log(plane.aircraftType);
+    }
     let acft_width = getWidthByICAO(plane.aircraftType);
     img.width = acft_width;
     img.style.position = "absolute";
@@ -132,9 +135,7 @@ function positionPlanes(message) {
     if (flp) {
       callsign.textContent = flp.callsign;
       callsign.setAttribute("onclick", "selectAcft('" + flp.callsign + "');");
-      if (isOnApproach(coordinates.x, coordinates.y)) {
-        console.log(flp.callsign + "is on runway");
-      }
+
     } else {
       callsign.textContent = planeId;
       callsign.setAttribute("onclick", 'selectAcft("' + planeId + '");');

@@ -17,8 +17,8 @@ const acft_to_icon = [
     {icao: "BOEING 707", icon: "a5.svg"},
     {icao: "BOEING 727 CARGO", icon: "a4.svg"},
     {icao: "BOEING 727", icon: "a4.svg"},
-    {icao: "BOEING 737 CARGO", icon: "b737.svg", width: 10},
-    {icao: "BOEING 737", icon: "b737.svg", width: 10},
+    {icao: "BOEING 737 CARGO", icon: "b737.svg", width: 8},
+    {icao: "BOEING 737", icon: "b737.svg", width: 8},
     {icao: "BOEING 747 CARGO", icon: "b747.svg", width: 12},
     {icao: "BOEING 747", icon: "b747.svg", width: 12},
     //generic icon for 757
@@ -60,14 +60,16 @@ const acft_to_icon = [
     // no E190 specific icons :( so E195 it is cuz close enough
     {icao: "E190", icon: "e195.svg", width: 6},
     {icao: "E195", icon: "e195.svg"},
-    {icao: "DOUGLAS MD11", icon: "md11.svg"},
+    {icao: "DOUGLAS MD11 CARGO", icon: "md11.svg", width: 11},
+    {icao: "DOUGLAS MD11", icon: "md11.svg", width: 11},
+
     //RIP concorde, gets a generic icon
     {icao: "CONCORDE", icon: "a0.svg", width: 7},
     //antonovs
     {icao: "AN 22", icon: "a5.svg"},
     {icao: "AN 225", icon: "a5.svg", width: 20},
     //ATRs
-    {icao: "ATR72", icon: "dh8a.svg", width: 12},
+    {icao: "ATR72", icon: "dh8a.svg", width: 7},
 
     
     {icao: "EXTRA 300S", icon: "cessna.svg", width: 4},

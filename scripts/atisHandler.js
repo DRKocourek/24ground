@@ -82,6 +82,11 @@ function toggleATISMenu() {
     }
 }
 
-function copyATIS() {
+let copied_text = document.getElementById("copied_text");
+
+async function copyATIS() {
     navigator.clipboard.writeText("/updateatis airport:" + airport.value + " arr_rwys:" + arr_rnw_input.value + " dep_rwys:" + dep_rnw_input.value + " chart_link:" + chart_link.value);
+    copied_text.style = "";
+    await sleep(3000);
+    copied_text.style = "display: none;";
 }

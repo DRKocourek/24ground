@@ -21,7 +21,6 @@ async function setupGeneralWS() {
       } else if (message.type === "CONTROLLERS") {
         controller_change = message.data;
         handleControllers();
-        console.log(controllers);
       }
     }
     flp_ws.onclose = () => {
